@@ -1,8 +1,8 @@
-using shoppinglist_backend;
+ï»¿using shoppinglist_backend;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Uten mellomrom og øæå
+// Uten mellomrom og Ã¸Ã¦Ã¥
 StaticConfiguration.Name = "DittNavn";
 
 // Add services to the container.
@@ -37,12 +37,14 @@ app.MapGet("/api/shoppingitems", async (TableStorageService service) =>
 app.MapPost("/api/shoppingitems", async (TableStorageService service, ShoppingItem item) =>
 {
     item.RowKey = Guid.NewGuid().ToString();
-    // TODO bytte ut med AI på sikt, fortelle investorer at vi bruker ai idag.
-    // Det er teknisk sett sant, fordi vi brukte copilot for å lage listen
+    // TODO bytte ut med AI pÃ¥ sikt, fortelle investorer at vi bruker ai idag.
+    // Det er teknisk sett sant, fordi vi brukte copilot for Ã¥ lage listen
     item.Category = item.Name.ToLower() switch
     {
-        "ananas" => "Frukt", "melon" => "Frukt", "kiwi" => "Frukt", "paprika" => "Grønnsaker", "gulrot" => "Grønnsaker", "brokkoli" => "Grønnsaker", "blomkål" => "Grønnsaker", "spinat" => "Grønnsaker", "salat" => "Grønnsaker",  "løk" => "Grønnsaker", "hvitløk" => "Grønnsaker",        "potet" => "Grønnsaker", "søtpotet" => "Grønnsaker", "mais" => "Grønnsaker", "erter" => "Grønnsaker", "bønner" => "Grønnsaker", "linser" => "Grønnsaker", "quinoa" => "Korn", "ris" => "Korn", "pasta" => "Korn","brød" => "Korn",  "havregryn" => "Korn", "kjeks" => "Snacks",        "sjokolade" => "Snacks", "godteri" => "Snacks", "chips" => "Snacks", "popcorn" => "Snacks", "nøtter" => "Snacks", "mandler" => "Snacks", "cashewnøtter" => "Snacks", "peanøtter" => "Snacks", "valnøtter" => "Snacks", "pistasjnøtter" => "Snacks", "rosiner" => "Snacks",
-        "tørkede aprikoser" => "Snacks", "tørkede tranebær" => "Snacks", "tørkede fiken" => "Snacks", "tørkede dadler" => "Snacks", "yoghurt" => "Meieri", "melk" => "Meieri", "ost" => "Meieri", "smør" => "Meieri", "kremost" => "Meieri",
+        "ananas" => "Frukt", "melon" => "Frukt", "kiwi" => "Frukt", "paprika" => "GrÃ¸nnsaker", "gulrot" => "GrÃ¸nnsaker", "brokkoli" => "GrÃ¸nnsaker", "blomkÃ¥l" => "GrÃ¸nnsaker", "spinat" => "GrÃ¸nnsaker", "salat" => "GrÃ¸nnsaker",  "lÃ¸k" => "GrÃ¸nnsaker", "hvitlÃ¸k" => "GrÃ¸nnsaker",
+        "potet" => "GrÃ¸nnsaker", "sÃ¸tpotet" => "GrÃ¸nnsaker", "mais" => "GrÃ¸nnsaker", "erter" => "GrÃ¸nnsaker", "bÃ¸nner" => "GrÃ¸nnsaker", "linser" => "GrÃ¸nnsaker", "quinoa" => "Korn", "ris" => "Korn", "pasta" => "Korn","brÃ¸d" => "Korn",  "havregryn" => "Korn", "kjeks" => "Snacks",
+        "sjokolade" => "Snacks", "godteri" => "Snacks", "chips" => "Snacks", "popcorn" => "Snacks", "nÃ¸tter" => "Snacks", "mandler" => "Snacks", "cashewnÃ¸tter" => "Snacks", "peanÃ¸tter" => "Snacks", "valnÃ¸tter" => "Snacks", "pistasjnÃ¸tter" => "Snacks", "rosiner" => "Snacks",
+        "tÃ¸rkede aprikoser" => "Snacks", "tÃ¸rkede tranebÃ¦r" => "Snacks", "tÃ¸rkede fiken" => "Snacks", "tÃ¸rkede dadler" => "Snacks", "yoghurt" => "Meieri", "melk" => "Meieri", "ost" => "Meieri", "smÃ¸r" => "Meieri", "kremost" => "Meieri",
         _ => "AI categorization is unavailable due to high demand"
 
     };

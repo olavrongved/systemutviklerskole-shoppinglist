@@ -9,7 +9,7 @@ interface ShoppingItem {
 }
 
 const dev = window.location.href === "http://localhost:3000/";
-const url = dev ? 'https://localhost:7147/api/shoppingitems' : '/api/shoppingitems'
+const url = dev ? 'http://localhost:5199/api/shoppingitems' : '/api/shoppingitems'
 
 const ShoppingList: React.FC = () => {
   const [items, setItems] = useState<ShoppingItem[]>([]);
