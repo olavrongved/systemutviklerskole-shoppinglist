@@ -8,18 +8,24 @@ interface ShoppingItem {
   category: string;
 }
 
+const dev = window.location.href === "http://localhost:3000/";
+const url = dev ? 'https://localhost:7147/api/shoppingitems' : '/api/shoppingitems'
+
 const ShoppingList: React.FC = () => {
   const [items, setItems] = useState<ShoppingItem[]>([]);
   const [newItem, setNewItem] = useState<string>('');
 
   useEffect(() => {
-    fetch('/api/shoppingitems')
+    console.log("fetcing", url);
+
+    fetch(url)
       .then(response => response.json())
       .then(data => setItems(data));
   }, []);
 
   const addItem = () => {
-    fetch('/api/shoppingitems', {
+    console.log("Adding item", url);
+    fetch(url, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -50,7 +56,7 @@ const ShoppingList: React.FC = () => {
       </div>
       <ul>
         {items.map((item) => (
-          <li key={item.id} className="border-b p-2">
+          <li key={item.rowKey} className="border-b p-2">
             {item.name} - {item.category}
           </li>
         ))}
