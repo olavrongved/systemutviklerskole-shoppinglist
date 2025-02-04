@@ -3,12 +3,16 @@
 import React, { useState, useEffect } from 'react';
 
 interface ShoppingItem {
-  id: string;
+  rowKey: string;
   name: string;
   category: string;
 }
 
-const dev = window.location.href === "http://localhost:3000/";
+let dev = false;
+if (typeof window !== "undefined") {
+  dev = window.location.href === "http://localhost:3000/";
+}
+
 const url = dev ? 'http://localhost:5199/api/shoppingitems' : '/api/shoppingitems'
 
 const ShoppingList: React.FC = () => {
