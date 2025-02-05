@@ -3,7 +3,7 @@
 var builder = WebApplication.CreateBuilder(args);
 
 // Uten mellomrom og øæå
-StaticConfiguration.Name = "DittNavn";
+StaticConfiguration.Name = "OlavR";
 
 // Add services to the container.
 builder.Services.AddSingleton<TableStorageService>();

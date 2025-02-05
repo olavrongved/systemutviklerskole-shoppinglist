@@ -26,3 +26,10 @@ jobs:
       run: dotnet build --no-restore
     - name: Test
       run: dotnet test --no-build --verbosity normal
+
+    - name: Build frontend    
+      working-directory: ./shoppinglist-frontend
+      run: npm install
+    - name: Build frontend
+      working-directory: ./shoppinglist-frontend
+      run: npm run build
